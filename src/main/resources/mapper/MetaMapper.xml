@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.dzcsmq.mqserver.mapper.MetaMapper">
+
+    <update id="createExchangeableTable">
+        create table if not exists exchange_table (
+            name varchar(50) primary key,
+            type int not null,
+            durable boolean not null,
+            auto_delete boolean not null,
+            arguments varchar(1024)
+        )
+    </update>
+
+    <update id="createQueueTable">
+        create table if not exists queue_table (
+            name varchar(50) primary key,
+            durable boolean not null,
+            exclusive boolean not null,
+            auto_delete boolean not null,
+            arguments varchar(1024)
+        )
+    </update>
+
+    <update id="createBindingTable">
+        create table if not exists binding_table (
+            exchange_name varchar(50) not null,
+            queue_name varchar(50) not null,
+            binding_key varchar(256) not null,
+            primary key (exchange_name, queue_name, binding_key)
+        )
+    </update>
+
+</mapper>
