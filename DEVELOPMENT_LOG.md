@@ -28,3 +28,19 @@
 验证结果：
 - Maven 测试通过
 - 启动测试过程中已生成 date/meta.db
+
+## 2026-09-09 Mapper 增删操作实现
+
+提交：本次提交
+
+完成内容：
+- 实现 exchange_table 的 insertExchange 和 deleteExchange
+- 实现 queue_table 的 insertQueue 和 deleteQueue
+- 实现 binding_table 的 insertBinding 和 deleteBinding
+- 为 Binding 补充 getter/setter，保证 MyBatis 能读取绑定字段
+- 为 deleteQueue 参数补充 @Param("queueName")，保证 XML 参数名可用
+- 增加 Mapper 增删操作测试，覆盖三类元数据的插入和删除
+
+验证结果：
+- Maven 测试通过
+- Mapper XML 增删方法已完成实际数据库调用验证

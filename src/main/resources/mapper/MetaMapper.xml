@@ -33,4 +33,65 @@
         )
     </update>
 
+    <insert id="insertExchange" parameterType="org.example.dzcsmq.mqserver.core.Exchange">
+        insert into exchange_table (
+            name,
+            type,
+            durable,
+            auto_delete,
+            arguments
+        ) values (
+            #{name},
+            #{type.type},
+            #{durable},
+            #{autoDelete},
+            #{arguments}
+        )
+    </insert>
+
+    <delete id="deleteExchange" parameterType="org.example.dzcsmq.mqserver.core.Exchange">
+        delete from exchange_table
+        where name = #{name}
+    </delete>
+
+    <insert id="insertQueue" parameterType="org.example.dzcsmq.mqserver.core.MSGQueue">
+        insert into queue_table (
+            name,
+            durable,
+            exclusive,
+            auto_delete,
+            arguments
+        ) values (
+            #{name},
+            #{durable},
+            #{exclusive},
+            #{autoDelete},
+            #{arguments}
+        )
+    </insert>
+
+    <delete id="deleteQueue" parameterType="java.lang.String">
+        delete from queue_table
+        where name = #{queueName}
+    </delete>
+
+    <insert id="insertBinding" parameterType="org.example.dzcsmq.mqserver.core.Binding">
+        insert into binding_table (
+            exchange_name,
+            queue_name,
+            binding_key
+        ) values (
+            #{exchangeName},
+            #{queueName},
+            #{bindingKey}
+        )
+    </insert>
+
+    <delete id="deleteBinding" parameterType="org.example.dzcsmq.mqserver.core.Binding">
+        delete from binding_table
+        where exchange_name = #{exchangeName}
+          and queue_name = #{queueName}
+          and binding_key = #{bindingKey}
+    </delete>
+
 </mapper>
