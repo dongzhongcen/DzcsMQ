@@ -21,6 +21,7 @@ class DzcsmqApplicationTests {
     void metaMapperCanInsertAndDeleteMetadata() {
         Exchange exchange = new Exchange();
         exchange.setName("test.exchange");
+        String exchangeName = exchange.getName();
         exchange.setDurable(true);
 
         MSGQueue queue = new MSGQueue();
@@ -33,7 +34,7 @@ class DzcsmqApplicationTests {
         binding.setBindingKey("test.key");
 
         metaMapper.deleteBinding(binding);
-        metaMapper.deleteExchange(exchange);
+        metaMapper.deleteExchange(exchangeName);
         metaMapper.deleteQueue(queue.getName());
 
         metaMapper.insertExchange(exchange);
@@ -41,7 +42,7 @@ class DzcsmqApplicationTests {
         metaMapper.insertBinding(binding);
 
         metaMapper.deleteBinding(binding);
-        metaMapper.deleteExchange(exchange);
+        metaMapper.deleteExchange(exchangeName);
         metaMapper.deleteQueue(queue.getName());
     }
 

@@ -94,4 +94,36 @@
           and binding_key = #{bindingKey}
     </delete>
 
+    <select id="selectAllExchanges" resultType="org.example.dzcsmq.mqserver.core.Exchange">
+        select
+            name,
+            case type
+                when 0 then 'DIRECT'
+                when 1 then 'FANOUT'
+                when 2 then 'TOPIC'
+            end as type,
+            durable,
+            auto_delete as autoDelete,
+            arguments
+        from exchange_table
+    </select>
+
+    <select id="selectAllQueues" resultType="org.example.dzcsmq.mqserver.core.MSGQueue">
+        select
+            name,
+            durable,
+            exclusive,
+            auto_delete as autoDelete,
+            arguments
+        from queue_table
+    </select>
+
+    <select id="selectAllBindings" resultType="org.example.dzcsmq.mqserver.core.Binding">
+        select
+            exchange_name as exchangeName,
+            queue_name as queueName,
+            binding_key as bindingKey
+        from binding_table
+    </select>
+
 </mapper>

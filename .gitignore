@@ -1,11 +1,44 @@
+# Project docs not intended for repository
 HELP.md
-target/
-date/
-.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
 
-### STS ###
+# Build output
+target/
+build/
+out/
+*.class
+
+# Runtime data and local databases
+data/
+date/
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+*.log
+
+# Sensitive/local configuration
+.env
+.env.*
+!.env.example
+application-local.yml
+application-local.yaml
+application-dev.yml
+application-dev.yaml
+*.pem
+*.key
+*.crt
+*.p12
+*.jks
+secrets.*
+
+# Maven wrapper binary cache
+.mvn/wrapper/maven-wrapper.jar
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# STS
 .apt_generated
 .classpath
 .factorypath
@@ -14,21 +47,24 @@ date/
 .springBeans
 .sts4-cache
 
-### IntelliJ IDEA ###
-.idea
+# IntelliJ IDEA
+.idea/
 *.iws
 *.iml
 *.ipr
 
-### NetBeans ###
+# NetBeans
 /nbproject/private/
 /nbbuild/
 /dist/
 /nbdist/
 /.nb-gradle/
-build/
+
+# VS Code
+.vscode/
+
+# Keep nested source directories named target/build if any
+!**/src/main/**/target/
+!**/src/test/**/target/
 !**/src/main/**/build/
 !**/src/test/**/build/
-
-### VS Code ###
-.vscode/
